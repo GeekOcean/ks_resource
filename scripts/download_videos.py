@@ -100,6 +100,7 @@ def download_videos(videos_path, videos_download_every):
     #     link_dict = json.loads(link_dict)
     while (count < videos_download_every):
         print('start download')
+        count += 1
         try:
             link = link_dict[dir_num + count]['url']
             res = requests.get(link)
@@ -112,7 +113,6 @@ def download_videos(videos_path, videos_download_every):
                 os.chdir(videopath_name)
                 os.system("ffmpeg -y -i %s %s" % (link, videoname))
                 print('download %s videos' % dir_num)
-                count += 1
                 os.chdir('../')
         except requests.exceptions.ConnectionError:
             print('ConnectionError -- please wait 3 seconds')
