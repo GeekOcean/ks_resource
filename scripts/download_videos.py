@@ -99,6 +99,7 @@ def download_videos(videos_path, videos_download_every):
     #     link_dict = json.load(f)
     #     link_dict = json.loads(link_dict)
     while (count < videos_download_every):
+        print('start download')
         try:
             link = link_dict[dir_num + count]['url']
             res = requests.get(link)
