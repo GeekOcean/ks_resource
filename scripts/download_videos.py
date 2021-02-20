@@ -87,9 +87,7 @@ def download_videos(videos_path, videos_download_every):
     os.chdir(videos_path)
     link_dict = {}
     res = 0
-    # 每次下载的视频数
     count = 0
-    # 获取目录下的文件夹数
     dir_num = len([
         lists for lists in os.listdir(videos_path)
         if os.path.isdir(os.path.join(videos_path, lists))
@@ -114,7 +112,6 @@ def download_videos(videos_path, videos_download_every):
                 os.system("ffmpeg -y -i %s %s" % (link, videoname))
                 print('download %s videos' % dir_num)
                 count += 1
-                # time.sleep(3)
                 os.chdir('../')
         except requests.exceptions.ConnectionError:
             print('ConnectionError -- please wait 3 seconds')
